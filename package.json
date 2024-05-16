@@ -1,0 +1,28 @@
+{
+  "name": "@kozento/utilities",
+  "version": "2024.05.16-5",
+  "description": "Utilities For Kozento",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/src/index.d.ts",
+        "default": "./dist/src/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run prebuild && npx swc src --config-file .swcrc -d dist && tsc src/index.ts --declaration --declarationMap --outDir dist/src",
+    "prebuild": "if exist dist rmdir /s /q dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.3.12",
+    "@swc/core": "^1.5.7",
+    "typescript": "^5.4.5"
+  },
+  "author": "Kozento",
+  "license": "ISC"
+}
